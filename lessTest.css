@@ -1,0 +1,88 @@
+	.box-shadow (@x: 0, @y: 0, @blur: 1px, @alpha) {
+		@val: @x @y @blur rgba(0, 0, 0, @alpha);
+		box-shadow: @val;
+		-webkit-box-shadow: @val;
+		-moz-box-shadow: @val;
+	}
+	
+	.box {
+		@base: #f938ab;
+		color: saturate(@base, 5%);
+		border-color: lighten(@base, 30%);
+		border-style: solid;
+		div {
+			.box-shadow(0, 0, 5px, 0.4)
+		}
+	}
+	
+	.main {
+		margin: 0 auto;
+		width: 600px;
+		height: 300px;
+		background: #E5E5E5;
+	}
+	
+	@twidth: 100px;
+	@theight: 100px;
+	.test {
+		width: @twidth/2;
+		height: @theight/2;
+		background: #87CEEB;
+	}
+	/*========= 定义一个类 ===========*/
+	
+	.roundedCorners(@radius: 5px) {
+		-moz-border-radius: @radius;
+		-webkit-border-radius: @radius;
+		border-radius: @radius;
+		height: 30px;
+		background: #FFCCFF;
+	}
+	/*＝＝＝＝＝＝＝＝＝＝ 定义的类应用到另个一个类中 ＝＝＝＝＝＝＝＝＝＝＝*/
+	
+	.footer {
+		.roundedCorners(50px);
+	}
+	
+	.list {
+		.footer;
+		& li {
+			.footer;
+			background: #5F9EA0;
+		}
+	}
+	/*命名空间*/
+	
+	#bundle {
+		.button () {
+			display: block;
+			border: 1px solid black;
+			background-color: grey;
+			&:hover {
+				background-color: white
+			}
+		}
+		
+	}
+	
+	
+
+.btn{
+	#bundle> .button;
+}
+
+
+/*测试变量区间*/
+@var: red;
+		.t1 {
+		  @var:#123456;
+		  &:hover{
+		  	 background: @var;  
+		  }
+		}
+		
+		.t2 {
+		 &:hover{
+		  	 background: @var;  
+		  }
+		}

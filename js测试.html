@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="tab1" style="width: 200px;height: 200px;background: red;"></div>
+	</body>
+</html>
+
+<script>
+	
+	function f(){
+		this.s=33;
+		function c(){
+			 this.subs=44;
+			return this;
+		}
+		 c(); //如果不new 的话 ,this指向的是windws,new 的话是c自己
+	}
+	
+	var o=new f();
+	alert(o);
+	
+	var t = document.getElementById("tab1"); 
+			t.onclick = function tst(e){ 
+				var c=this;  //测试this指向的是
+			alert(''); 
+} 
+</script>

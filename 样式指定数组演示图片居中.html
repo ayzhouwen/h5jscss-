@@ -1,0 +1,50 @@
+<!doctype html>
+<html>
+<head>
+ <meta charset="UTF-8">
+   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" name="viewport">
+ <title>HTML5Course - HTML5学堂</title>
+ <link rel="stylesheet" href="reset.css">
+ <style>
+  html,body{
+    width: 100%;
+    height: 100%;
+  }
+  .wrap{
+   position:relative;
+   width: 100%;
+   height: 100%;
+  }
+  .wrap > div {
+   /*父级设置定位*/
+   position:absolute;
+   left:50%;
+   top:50%;
+  }
+  .wrap img {
+   /*设置图片大小*/
+   display: block;
+   width: 200px;
+   height: 200px;
+  }
+  .wrap img:nth-child(1) {
+   /*第一张图片隐藏*/
+   visibility:hidden; 
+  }
+  .wrap img:nth-child(2) {
+   /*第二张图片定位*/
+   position:absolute;
+   left: -50%;
+   top: -50%; 
+  }
+ </style>
+</head>
+<body>
+<div class="wrap">
+  <div>
+    <img src="https://mmbiz.qlogo.cn/mmbiz/p6DwiaCENIB6pR8GhsfVeo7382t1SicdA8iahVpBPSRMaFPaHHLXuyXvkryL43R4GuLMOrhVvDFwwfprmH9f9EgVg/0?wx_fmt=jpeg" alt="HTML5学堂" />
+    <img src="https://mmbiz.qlogo.cn/mmbiz/p6DwiaCENIB6pR8GhsfVeo7382t1SicdA8iahVpBPSRMaFPaHHLXuyXvkryL43R4GuLMOrhVvDFwwfprmH9f9EgVg/0?wx_fmt=jpeg" alt="HTML5学堂" />
+  </div>  
+</div>
+</body>
+</html>

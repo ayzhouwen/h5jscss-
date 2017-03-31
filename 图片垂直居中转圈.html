@@ -1,0 +1,46 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>HTML5学堂 - CSS3 - loading图</title>
+    <link rel="stylesheet" href="../common/reset.css">
+    <style>
+        body,html {
+            height: 100%;
+        }
+        .wrap{
+            position: absolute;
+            top: 0%;
+            right: 0%;
+            bottom: 0%;
+            left: 0%;
+            width: 0px;
+            height: 0px;
+            padding: 15%;
+            margin: auto;
+            border: 10px solid #06f;
+            border-left-width: 4px;
+            border-bottom-width: 3px;
+            border-right-width: 2px;
+            border-radius: 50%;
+        }
+        
+        .wrap{
+ 
+    		-webkit-animation: loading 1s linear infinite;
+		}
+
+	  @-webkit-keyframes loading {
+		    from {-webkit-transform: rotate(0deg);}
+		    to {-webkit-transform: rotate(360deg);}
+		}
+		
+		body {
+    overflow: hidden;
+}
+    </style>
+</head>
+<body>
+    <div class="wrap"></div>
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+<style>
+	.box {
+            width: 200px;
+            height: 200px;
+            margin-bottom: 20px;
+            padding: 50px;
+            border: 2px solid red;
+            overflow: hidden;
+        }
+        .box div {
+            width: 100px;
+            height: 100px;
+            border: 2px solid black;
+        }
+        .one {
+            background-color: blue;
+        }
+        .two {
+            background-color: yellow;
+        }
+        #box1 .one {
+            margin-top: -50px;
+        }
+        #box2 .one {
+            margin-bottom: -50px;
+        }
+        #box3 div {
+            float: left;
+        }
+        #box3 .one {
+            margin-right: -50px;
+        }
+        #box4 div {
+            float: left;
+        }
+        #box4 .one {
+            margin-left: -50px;
+        }
+</style>
+	<body>
+		<div id="box1" class="box">
+			<div class="one"></div>
+			<div class="two"></div>
+		</div>
+		<div id="box2" class="box">
+			<div class="one"></div>
+			<div class="two"></div>
+		</div>
+		<div id="box3" class="box">
+			<div class="one"></div>
+			<div class="two"></div>
+		</div>
+		<div id="box4" class="box">
+			<div class="one"></div>
+			<div class="two"></div>
+		</div>
+	</body>
+
+</html>
