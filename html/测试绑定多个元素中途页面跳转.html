@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+					  <script type="text/javascript" src="../js/jquery-1.11.3.js"></script>
+	</head>
+	<body>
+			<input   id="testbtn"  type="button" value="测试事件" class="btn"/>
+			<a target="_blank"></a>
+	</body>
+</html>
+
+<script>
+	
+	//总结要想实现	location.href之前执行某个事件,只能在绑定事件在location.href的事件的前面,由于location.href是异步的,很可能导致执行到一半,页面已经跳转了
+	
+		$(document).on('click','.btn',function(e){
+		console.log(e);
+		console.log('cssbtn1;');
+	})
+	$(document).on('click','#testbtn',function(){
+	//	location.href='http://www.baidu.com'
+	})
+	$(document).on('click','#testbtn',function(){
+		console.log(1)
+	})
+	
+		$(document).on('click','#testbtn',function(){
+		console.log(2)
+	})
+		
+				$(document).on('click','#testbtn',function(){
+		console.log(3)
+	})
+				
+							$(document).on('click','#testbtn',function(){
+			//	location.href='https://www.tmall.com'
+	})
+
+	$(document).on('click','#testbtn',function(){
+			setTimeout(function(){	location.href='https://www.jd.com'},0)
+	})
+														
+	$(document).on('click','.btn',function(e){
+		console.log(e);
+		console.log('cssbtn2;');
+	})
+</script>
