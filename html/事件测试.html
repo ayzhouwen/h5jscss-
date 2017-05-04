@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+				#p1{width: 200px;height: 200px;background: #87CEEB;}
+				#p2{width: 100px;height: 100px;background: #FFCCFF;}
+		</style>
+	</head>
+	<body>
+		<div id="p1">
+				<div id="p2">
+							<input id="btn" type="button" value="事件探测"  />
+				</div>
+		</div>
+	</body>
+</html>
+<script type="text/javascript" src="../js/jquery-1.11.3.js" ></script>
+
+<script>
+	$(document).click(function(e){
+		console.log(e);
+	})
+</script>
