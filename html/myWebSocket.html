@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" name="viewport">
+    <title>我的websocket</title>
+</head>
+<body>
+<div>
+    <label>
+      <span>请输入数据</span>
+        <input type="text" id="neirong" height="30px">
+    </label>
+</div>
+
+<div>
+    <table id="recvTable">
+        <tr>
+            <th>接收数据</th>
+            <th>接收时间</th>
+        </tr>
+
+
+    </table>
+</div>
+</body>
+
+</html>
+<script type="text/javascript" src="../js/jquery-1.11.3.js"></script>
+<script>
+    var ws
+    WebSocketTest()
+
+        function WebSocketTest()
+        {
+            if ("WebSocket" in window)
+            {
+                alert("您的浏览器支持 WebSocket!");
+
+                // 打开一个 web socket
+                 ws = new WebSocket("ws://192.168.0.110:9321");
+
+                ws.onopen = function()
+                {
+                    // Web Socket 已连接上，使用 send() 方法发送数据
+                    var sdata="zw_";
+                    ws.send(sdata);
+                    console.log("数据发送中=>"+sdata+new Date().getTime());
+                };
+
+                ws.onmessage = function (evt)
+                {
+                    var received_msg = evt.data
+                    console.log("数据已接收=>"+received_msg+new Date().getTime());
+
+                    var html="<tr><td>"+received_msg+"</td><td>"+received_msg+"</td></tr>"
+                    $('#recvTable').append(html);
+                };
+
+                ws.onclose = function()
+                {
+                    // 关闭 websocket
+                    alert("连接已关闭...");
+                };
+            }
+
+            else
+            {
+                // 浏览器不支持 WebSocket
+                alert("您的浏览器不支持 WebSocket!");
+            }
+        }
+
+
+
+        $('#neirong').change(function () {
+            // Web Socket 已连接上，使用 send() 方法发送数据
+            var sdata=$(this).val()
+            ws.send(sdata);
+        })
+</script>
