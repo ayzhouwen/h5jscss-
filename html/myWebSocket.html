@@ -35,10 +35,10 @@
         {
             if ("WebSocket" in window)
             {
-                alert("您的浏览器支持 WebSocket!");
+               // alert("您的浏览器支持 WebSocket!");
 
                 // 打开一个 web socket
-                 ws = new WebSocket("ws://192.168.0.110:9321");
+                 ws = new WebSocket("ws://192.168.101.45:40088/cms/socket/33");
 
                 ws.onopen = function()
                 {

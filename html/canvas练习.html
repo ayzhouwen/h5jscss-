@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input type="search">
+</body>
+<canvas id="canvas" width="640" height="360"></canvas>
+<!--线-->
+<canvas id="canvas1" width="200" height="100"></canvas>
+<!--矩形-->
+<canvas id="canvas2" width="200" height="100"></canvas>
+<!--圆-->
+<canvas id="canvas3" width="300" height="300"></canvas>
+<!--画线-->
+<script>
+    var c=document.getElementById('canvas1');
+    var ctx=c.getContext("2d");
+    ctx.lineWidth=10;
+    ctx.strokeStyle="red";
+    ctx.lineCap="butt";
+    ctx.beginPath();
+    ctx.moveTo(10,10);
+    ctx.lineTo(150,10);
+    ctx.stroke();
+
+    ctx.lineCap="round";
+    ctx.beginPath();
+    ctx.moveTo(10,40);
+    ctx.lineTo(150,40);
+    ctx.stroke();
+
+    ctx.lineCap="square";
+    ctx.beginPath();
+    ctx.moveTo(10,70);
+    ctx.lineTo(150,70);
+    ctx.stroke();
+
+</script>
+
+<!--画矩形-->
+<script>
+    var c=document.getElementById('canvas2');
+    var ctx=c.getContext("2d");
+    ctx.lineWidth=10;
+    ctx.strokeStyle="red";
+    ctx.beginPath();
+    ctx.fillRect(10,10,70,40);
+
+</script>
+
+
+<!--画圆-->
+<script>
+    var c=document.getElementById('canvas3');
+    var ctx=c.getContext("2d");
+    ctx.lineWidth=10;
+    ctx.strokeStyle="red";
+    ctx.beginPath();
+    ctx.arc(100,100,70,0,130*Math.PI/180,true);
+    ctx.stroke();
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script >
+    //获取context对象
+    var canvas=document.getElementById('canvas');
+    if (canvas.getContext){
+        var context=canvas.getContext('2d');
+        //设置颜色
+        context.fillStyle='rgb(255,0,0)';
+        //从坐标(20,30)开始,画一个64*36大小的矩形
+        context.fillRect(20,30,64,36);
+    }
+
+    //获取当前位置
+    // window.addEventListener('load',function () {
+    //     //判断可否使用geolocation
+    //     if(navigator.geolocation){
+    //         //定期获取所在地
+    //         navigator.geolocation.watchPosition(update);
+    //     }
+    //
+    //
+    // },false);
+
+    //获取位置并显示
+    function update(position) {
+        //纬度
+        var  lat=position.coords.latitude;
+        //经度
+        var lng=position.coords.longitude;
+        //把经度和纬度显示出来
+        document.write('纬度: '+lat+', 经度:'+lng);
+    }
+
+</script>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<<body>
+		<button type="button" id="dl">登录</button>
+		<button type="button" id="csjk">接口测试</button>
+	<span>token:</span><span id="tokenstr"></span>
+	<div id="list"></div>
+	</body>
+</html>
+<script type="text/javascript" src="../js/jquery-1.11.3.js"></script>
+
+<script>
+
+
+    $.ajax({
+        type: "GET",
+        url: "http://127.0.0.1:40080/cms/api/appVersion/testApi",
+        // beforeSend: function(request) {
+        //     request.setRequestHeader("333zw", "zw");
+        // },
+        success: function(result) {
+            console.log(result);
+        }
+    })
+
+    $('#csjk').click(function () {
+        $.ajax({
+            type: "post",
+            url: "http://127.0.0.1:40080/cms/api/appVersion/testApi",
+            beforeSend: function(request) {
+                request.setRequestHeader("x-access-token", $('#tokenstr').text());
+            },
+            dataType : 'json',
+
+
+            success: function(result) {
+                console.log(result);
+                $('#list').append("<p>"+JSON.stringify(result)+"</p>")
+            }
+        })
+    })
+
+	$('#dl').click(function () {
+        $.ajax({
+            type: "post",
+            url: "http://127.0.0.1:40080/cms/api/users/login",
+            dataType : 'json',
+            data:{mobile:"123456",password:"123456"},
+            beforeSend: function(request) {
+                request.setRequestHeader("x-access-token", $('#tokenstr').text());
+            },
+
+            success: function(result) {
+                console.log(result);
+                $('#tokenstr').text(result.data.token);
+            }
+        })
+    })
+
+</script>
