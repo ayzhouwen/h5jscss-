@@ -1,0 +1,75 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+    <title>无标题文档</title>
+    <style>
+        @media print{
+            INPUT {display:none}
+        }
+    </style>
+</head>
+
+<body>
+
+<div id="printTest">
+
+</div>
+
+<input type=button value=" 打 印 " onclick=javascript:window.print()>
+</body>
+</html>
+
+<script type="text/javascript" src="../js/jquery-1.11.3.js"></script>
+
+<script>
+    // A4  210  297 厘米
+    // 一英寸=2.54cm
+    // windows 默认DPI 96
+    // A4高像素:96/254*2970=1122.5
+    // A4宽像素:96/254*2100=793.7
+    // 一行是20px,一页 1122.5/22约为50行(20高+边框2px)
+    var htmlstr=''
+    for (let i = 0; i <49 ; i++) {
+        var item="<div class=\"mydivrow\">\n" +
+            "    测试区域1-"+i+"\n" +
+            "</div>";
+        htmlstr+=item;
+    }
+    for (let i = 0; i <49 ; i++) {
+        var item="<div class=\"mydivrow\" style='color: #00B83F'>\n" +
+            "    测试区域2-"+i+"\n" +
+            "</div>";
+        htmlstr+=item;
+    }
+    $('#printTest').html(htmlstr);
+</script>
+<style>
+    @page{
+        size:  A4 portrait;
+        margin: 0cm;
+    }
+    .mydivrow{
+        font-size: 14px;
+        color: red;
+        text-align: center;
+        border: 1px solid #000;
+        line-height: 20px;
+        height: 20px;
+    }
+    table
+    {
+        margin: 0 auto;
+        text-align: center;border-collapse:collapse;
+    }
+    td
+    {
+        color: #666;
+        height: 35px;
+        line-height: 35px;
+        padding: 10px;
+        word-wrap:break-word;word-break:break-all;overflow:hidden;
+        border:1px solid ;
+
+    }
+</style>
