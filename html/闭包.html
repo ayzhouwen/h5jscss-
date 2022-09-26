@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>闭包测试</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    function a() {
+        for (var i = 0; i <3 ; i++) {
+             log =function (i) {
+                console.log(i);
+            }
+        }
+
+        setTimeout(log,100,i)
+    }
+
+    a();
+</script>
