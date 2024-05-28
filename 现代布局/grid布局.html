@@ -1,0 +1,124 @@
+
+<!--代码参考：https://juejin.cn/post/6854573220306255880-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Title</title>
+    <style>
+        .wrapper {
+            margin: 60px;
+            /* 声明一个容器 */
+            display: grid;
+            /*  声明3列的宽度 repeat重复函数  */
+            /*grid-template-columns: repeat(3, 200px);*/
+            /*  声明行间距和列间距  */
+            grid-gap: 20px;
+            /*  声明2行的高度  */
+            /*grid-template-rows: 100px 200px;*/
+
+            /*  声明了三列，宽度分别为 200px 100px 200px */
+            /*grid-template-columns: 200px 100px 200px;*/
+
+            /*  声明了两行，行高分别为 50px 50px  */
+            /*grid-template-rows: 50px 50px;*/
+
+            /*auto-fill 关键字：表示自动填充，让一行（或者一列）中尽可能的容纳更多的单元格。*/
+            /*grid-template-columns: repeat(auto-fill, 200px) */
+            /*表示列宽是 200 px，但列的数量是不固定的，只要浏览器能够容纳得下，就可以放置元素，：*/
+            /*grid-template-columns: repeat(auto-fill, 200px);*/
+
+            /*fr 关键字：Grid 布局还引入了一个另外的长度单位来帮助我们创建灵活的网格轨道。*/
+            /*fr 单位代表网格容器中可用空间的一等份。*/
+            /*grid-template-columns: 200px 1fr 2fr */
+            /*表示第一个列宽设置为 200px，后面剩余的宽度分为两部分，宽度分别为剩余宽度的 1/3 和 2/3。*/
+            /*grid-template-columns: 200px 1fr 2fr;*/
+
+
+            /*minmax() 函数：我们有时候想给网格元素一个最小和最大的尺寸，*/
+            /*minmax() 函数产生一个长度范围，表示长度就在这个范围之中都可以应用到网格项目中。*/
+            /*它接受两个参数，分别为最小值和最大值。*/
+            /*grid-template-columns: 1fr 1fr minmax(300px, 2fr) 的意思是，*/
+            /*第三个列宽最少也是要 300px，但是最大不能大于第一第二列宽的两倍*/
+            /*grid-template-columns: 1fr 1fr minmax(300px, 2fr);*/
+
+
+            /*auto 关键字：由浏览器决定长度。*/
+            /*通过 auto 关键字，我们可以轻易实现三列或者两列布局。*/
+            /*grid-template-columns: 100px auto 100px 表示第一第三列为 100px，中间由浏览器决定长度*/
+            grid-template-columns: 100px auto 100px;
+
+
+            /**
+                这个会补全一些由于前面一个各自很大造成的换行空白，类似 对图片展示的可能好，但是对精确布局，
+                会导致错位，看具体的需求
+             */
+            /*grid-auto-flow: row dense*/
+
+        }
+
+        @media (max-width: 480px) {
+            .wrapper {
+                margin: 60px;
+                /* 声明一个容器 */
+                display: grid;
+                /*  声明3列的宽度 repeat重复函数  */
+                /*grid-template-columns: repeat(3, 200px);*/
+                /*  声明行间距和列间距  */
+                grid-gap: 20px;
+                /*小屏展示单列*/
+                grid-template-columns: 1fr;
+
+            }
+        }
+        .one {
+            background: #19CAAD;
+        }
+        .two {
+            background: #8CC7B5;
+        }
+        .three {
+            background: #D1BA74;
+        }
+        .four {
+            background: #BEE7E9;
+        }
+        .five {
+            background: #E6CEAC;
+        }
+        .six {
+            background: #ECAD9E;
+        }
+        .item {
+            text-align: center;
+            font-size: 200%;
+            color: #fff;
+        }
+
+    </style>
+</head>
+<body>
+<p>
+    grid-template-columns 属性设置列宽，grid-template-rows 属性设置行高
+</p>
+<div class="wrapper">
+    <div class="one item">One</div>
+    <div class="two item">Two</div>
+    <div class="three item">Three</div>
+    <div class="four item">Four</div>
+    <div class="five item">Five</div>
+    <div class="six item">Six</div>
+    <div class="six item">Six</div>
+    <div class="six item">Six</div>
+    <div class="six item">Six</div>
+    <div class="six item">Six</div>
+    <div class="six item">Six</div>
+    <div class="six item">Six</div>
+    <div class="six item">Six</div>
+</div>
+
+<span>999999999</span>
+<p>2222</p>
+</body>
+</html>

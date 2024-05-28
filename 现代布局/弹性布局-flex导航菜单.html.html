@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IoT Dashboard Visualization</title>
+    <style>
+        /* 基本样式重置 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            background: radial-gradient(circle, #0f2027, #203a43, #2c5364);
+            color: #ffffff;
+        }
+
+        /* 顶部导航栏 */
+        .header {
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            padding: 10px 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+
+        .nav-item {
+            padding: 10px 20px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .nav-item:hover {
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 4px;
+        }
+
+        /* 容器布局 */
+        .container {
+            display: flex;
+            flex: 1;
+        }
+
+        /* 侧边栏 */
+        .sidebar {
+            width: 300px;
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+            overflow-y: auto;
+            box-shadow: 2px 0 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .stats, .table-stats {
+            margin-bottom: 20px;
+        }
+
+        /* 统计项样式 */
+        .stat-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 10px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s, background 0.3s;
+        }
+
+        .stat-item:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .icon {
+            font-size: 24px;
+            margin-right: 10px;
+        }
+
+        .stat-info h3 {
+            margin: 0;
+            font-size: 18px;
+            color: #b0c7d6;
+        }
+
+        .stat-info p {
+            margin: 5px 0 0;
+            font-size: 16px;
+        }
+
+        /* 表格样式 */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        thead th {
+            background-color: rgba(255, 255, 255, 0.2);
+            padding: 10px;
+            text-align: left;
+            color: #b0c7d6;
+        }
+
+        tbody tr:nth-child(even) {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        tbody td {
+            padding: 10px;
+            color: #ffffff;
+        }
+
+        /* 主内容区域 */
+        .content {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #22303d, #1a262f);
+            padding: 20px;
+        }
+
+        .model-display {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+            padding: 20px;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        #3d-model {
+            width: 100%;
+            height: 500px;
+            background-color: #1f2a38;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+            box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* 科技感装饰效果 */
+        #3d-model::before, #3d-model::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            animation: rotate 10s linear infinite;
+        }
+
+        #3d-model::after {
+            animation: rotate 15s linear infinite reverse;
+        }
+
+        @keyframes rotate {
+            0% {
+                transform: scale(0) rotate(0deg);
+            }
+            50% {
+                transform: scale(1.5) rotate(180deg);
+            }
+            100% {
+                transform: scale(0) rotate(360deg);
+            }
+        }
+
+    </style>
+</head>
+<body>
+<header class="header">
+    <nav class="navbar">
+        <div class="nav-item">Home</div>
+        <div class="nav-item">Devices</div>
+        <div class="nav-item">Statistics</div>
+        <div class="nav-item">Settings</div>
+    </nav>
+</header>
+<div class="container">
+    <div class="sidebar">
+        <div class="stats">
+            <div class="stat-item">
+                <i class="icon">🔌</i>
+                <div class="stat-info">
+                    <h3>Devices Online</h3>
+                    <p>120</p>
+                </div>
+            </div>
+            <div class="stat-item">
+                <i class="icon">🌡️</i>
+                <div class="stat-info">
+                    <h3>Average Temp</h3>
+                    <p>23°C</p>
+                </div>
+            </div>
+            <div class="stat-item">
+                <i class="icon">⚡</i>
+                <div class="stat-info">
+                    <h3>Power Usage</h3>
+                    <p>75 kWh</p>
+                </div>
+            </div>
+            <!-- 更多统计项 -->
+        </div>
+        <div class="table-stats">
+            <table>
+                <thead>
+                <tr>
+                    <th>Device</th>
+                    <th>Status</th>
+                    <th>Last Active</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>Sensor 1</td>
+                    <td>Online</td>
+                    <td>2 mins ago</td>
+                </tr>
+                <tr>
+                    <td>Actuator 3</td>
+                    <td>Offline</td>
+                    <td>5 hours ago</td>
+                </tr>
+                <!-- 更多表格数据 -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <main class="content">
+        <div class="model-display">
+            <!-- 这里可以嵌入3D模型展示，例如使用Three.js或其他3D库 -->
+            <h2>3D Model Display</h2>
+            <div id="3d-model">3D模型加载区域</div>
+        </div>
+    </main>
+</div>
+</body>
+</html>
+

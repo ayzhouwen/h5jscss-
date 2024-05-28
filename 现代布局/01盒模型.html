@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第4节:CSS盒模型与布局容器</title>
+    <style>
+        div{
+            width: 100px;
+            height: 100px;
+            border: 1px solid red;
+            /*IE盒模型(css3属性 看具体需求，主要解决宽度不受内边距和边框的影响  )*/
+            box-sizing: border-box;
+            margin: 1px;
+            padding: 1px;
+    }</style>
+</head>
+<body>
+第4节:CSS盒模型
+1.
+每个HTML元素可以视为一个矩形盒子，内容、内边距、边框、外边距
+内容：元素实际的内容区域 content
+内边距：环绕内容区域的空白空间 padding
+边框：包裹在内边距外部的可见线条 border
+外边距：围绕在边框的透明区域 margin
+
+
+<div>css 盒模型</div>
+2.盒模型的类型盒差异
+    标准盒模型
+        总宽度=width+padding+border
+    IE盒模型
+        总宽度=width，即会自动缩小内容宽度
+
+因此，margin 不会增加元素的自身大小，只会增加元素之间的距离。
+如果你希望增加元素本身的尺寸，
+应该调整 width、height、padding 或 border。
+</body>
+</html>

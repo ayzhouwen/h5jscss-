@@ -1,0 +1,56 @@
+。
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flex: 1 Example</title>
+    <style>
+        .container {
+            display: flex;
+            width: 100%;
+            height: 100vh;
+        }
+
+        .item {
+            background-color: lightblue;
+            margin: 10px;
+            text-align: center;
+            line-height: 50px; /* 为了使文本垂直居中 */
+            color: white;
+        }
+
+        .item1 {
+            flex: 1; /* 项目将均等地分享容器中的可用空间 */
+        }
+
+        .item2 {
+            flex: 1; /* 项目将均等地分享容器中的可用空间 */
+        }
+
+        .item3 {
+            flex: 1; /* 项目将均等地分享容器中的可用空间 */
+        }
+    </style>
+</head>
+<body>
+<p>
+    flex: 1 的含义
+    当你将 flex: 1 应用于一个 flex 项目时，它实际上是一个简写，等价于：
+
+    css
+    复制代码
+    flex: 1 1 0%;
+    这意味着：
+
+    flex-grow: 1：定义项目的增长因子，表示项目可以增长以填充剩余的空间。值 1 意味着项目将均等地分享容器中的可用空间。
+    flex-shrink: 1：定义项目的缩小因子，表示项目可以缩小以适应容器的空间。值 1 意味着项目将均等地分享容器中的收缩空间。
+    flex-basis: 0%：定义项目在分配多余空间之前占据的主尺寸。值 0% 意味着项目的基础尺寸为 0，项目将从 0 开始并根据 flex-grow 和 flex-shrink 属性进行扩展或收缩
+</p>
+<div class="container">
+    <div class="item item1">Item 1</div>
+    <div class="item item2">Item 2</div>
+    <div class="item item3">Item 3</div>
+</div>
+</body>
+</html>

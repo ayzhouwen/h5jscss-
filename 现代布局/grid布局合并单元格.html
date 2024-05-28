@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Grid Merge Cells</title>
+    <style>
+        .container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr); /* 4列，每列等宽 */
+            grid-template-rows: repeat(4, 100px); /* 4行，每行高度100px */
+            gap: 10px; /* 单元格间距 */
+        }
+        .item {
+            background-color: lightblue;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid #333;
+        }
+        .item1 {
+            grid-column: 1 / 3; /* 跨越列1和列2 */
+        }
+        .item2 {
+            grid-row: 2 / 5; /* 跨越行2到行4 */
+        }
+        .item3 {
+            grid-column: 3 / 5; /* 跨越列3和列4 */
+            grid-row: 3 / 5; /* 跨越行3和行4 */
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="item item1">1 (1 / 3)</div>
+    <div class="item item2">2 (2 / 5)</div>
+    <div class="item">3</div>
+    <div class="item">4</div>
+    <div class="item">5</div>
+    <div class="item item3">6 (3 / 5)</div>
+    <div class="item">7</div>
+</div>
+<p>
+    解释：
+    .container:
+
+    display: grid: 将容器设置为网格布局。
+    grid-template-columns: repeat(4, 1fr): 创建4列，每列宽度相等。
+    grid-template-rows: repeat(4, 100px): 创建4行，每行高度100px。
+    gap: 10px: 设置网格项之间的间距。
+    .item1:
+
+    grid-column: 1 / 3: 跨越第1列和第2列。
+    .item2:
+
+    grid-row: 2 / 5: 跨越第2行到第4行。
+    .item3:
+
+    grid-column: 3 / 5: 跨越第3列和第4列。
+    grid-row: 3 / 5: 跨越第3行到第4行。
+    结果：
+    第一个项目（item1）跨越了前两列。
+    第二个项目（item2）跨越了第二到第四行。
+    第六个项目（item3）同时跨越了第三和第四列，以及第三和第四行。
+    这种方式可以灵活地控制网格项在网格中的位置和大小，实现复杂的布局。
+</p>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!--参考 https://blog.csdn.net/m0_53206841/article/details/124419975-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        .container {
+            background-color: lightgrey;
+            /*解决方法一：*/
+            /*overflow: hidden;*/
+            /*解决方法二：*/
+            /*overflow: auto;*/
+
+            /*解决方法三：设置父元素浮动*/
+            /*float: left;*/
+
+            /*解决办法四*/
+            /*display: inline-block;*/
+
+            /*解决办法五 手动设置父容器高度*/
+            /*height: 200px;*/
+
+        }
+
+        /*解决方法六 添加一个伪类*/
+        /*.container::after {*/
+        /*    content: "";*/
+        /*    display: table;*/
+        /*    clear: both;*/
+        /*}*/
+
+
+        .box {
+            float: left;
+            width: 100px;
+            height: 100px;
+            background-color: red;
+        }
+        .box1{
+            float: left;
+            width: 100px;
+            height: 100px;
+            background-color: #82CEEB;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <div class="box">Content</div>
+    <div class="box1">Content</div>
+    <p>子元素浮动后，无法撑起父元素高度，导致父元素高度丢失，其下元素会自动上移，导致页面布局混乱</p>
+<!--    解决办法七 末尾加一个空div-->
+<!--    <div style="clear: both"></div>-->
+</div>
+</body>
+</html>
